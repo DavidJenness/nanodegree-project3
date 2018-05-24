@@ -54,15 +54,19 @@ class Player {
         switch (key) {
             case "up":
                 this.y = this.y - movementRate;
+                if (this.y < -10) this.y=-10;
                 break;
             case "down":
                 this.y = this.y + movementRate;
+                if (this.y > 440) this.y=440;
                 break;
             case "left":
                 this.x = this.x - movementRate;
+                if (this.x < -10) this.x=-10;
                 break;
             case "right":
                 this.x = this.x + movementRate;
+                if (this.x > 410) this.x=410;
                 break;
             default:
                 console.log("invalid key pressed");
