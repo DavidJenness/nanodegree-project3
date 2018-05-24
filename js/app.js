@@ -38,12 +38,31 @@ class Player {
 
     }
     render() {
-        
+
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
         //console.log("Render player");
     }
-    handleInput() {
-console.log("movement detected");
+    handleInput(key) {
+        console.log("movement detected");
+        console.log(key);
+        let movementRate = 20;
+        switch (key) {
+            case "up":
+                this.y = this.y - movementRate;
+                break;
+            case "down":
+                this.y = this.y + movementRate;
+                break;
+            case "left":
+                this.x = this.x - movementRate;
+                break;
+            case "right":
+                this.x = this.x + movementRate;
+                break;
+            default:
+                console.log("invalid key pressed");
+
+        }
     }
 }
 
