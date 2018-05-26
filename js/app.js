@@ -7,6 +7,7 @@ var Enemy = function () {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     //Pick a random row for the enemy to start
+ //TODO -- Eliminate DRY
     let myRandom = Math.floor(Math.random() * 4);
     switch (myRandom) {
         case 0:
@@ -29,6 +30,28 @@ var Enemy = function () {
     this.speedModifier = Math.floor(Math.random() * 150) + 50;
 };
 
+Enemy.prototype.setStart = function () {
+    let myRandom = Math.floor(Math.random() * 4);
+    switch (myRandom) {
+        case 0:
+            this.y = 60;
+            break;
+        case 1:
+            this.y = 145;
+            break;
+        case 2:
+            this.y = 225;
+            break;
+        case 3:
+            this.y = 310;
+            break;
+        default:
+            this.y = 60;
+    }
+     //Need some variation on speed
+     this.speedModifier = Math.floor(Math.random() * 150) + 50;
+}
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
@@ -38,6 +61,7 @@ Enemy.prototype.update = function (dt) {
     this.x = (this.x + this.speedModifier * dt);
     if (this.x >= 495) {
         this.x = -100;
+        this.setStart();
     }
     console.log(this.x);
 };
