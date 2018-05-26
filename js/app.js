@@ -63,13 +63,13 @@ Enemy.prototype.update = function (dt) {
         this.x = -100;
         this.setStart();
     }
-    console.log(this.x);
+    //console.log(this.x);
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log("Render Enemy");
+    //console.log("Render Enemy");
 };
 
 // Now write your own player class
@@ -93,8 +93,8 @@ class Player {
         //console.log("Render player");
     }
     handleInput(key) {
-        console.log("movement detected");
-        console.log(key);
+        //console.log("movement detected");
+        //console.log(key);
         let movementRate = 20;
         switch (key) {
             case "up":
@@ -114,7 +114,7 @@ class Player {
                 if (this.x > 410) this.x = 410;
                 break;
             default:
-                console.log("invalid key pressed");
+               // console.log("invalid key pressed");
 
         }
     }
