@@ -103,6 +103,7 @@ class Player {
                     this.y = -10;
                     //This is where we need to indicate that you win
                     console.log("You Win");
+                    document.getElementById("dialogBox").showModal();
                 }
 
                 break;
@@ -149,3 +150,12 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function playAgain() {
+    //Ask the player if they want to start the game
+    document.getElementById("dialogBox").close();
+    startNewGame();
+}
+
+function startNewGame() {
+}
