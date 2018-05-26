@@ -158,4 +158,5 @@ function playAgain() {
 }
 
 function startNewGame() {
+    player = new Player();
 }
