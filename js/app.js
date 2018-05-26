@@ -7,7 +7,7 @@ var Enemy = function () {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     //Pick a random row for the enemy to start
- //TODO -- Eliminate DRY
+    //TODO -- Eliminate DRY
     let myRandom = Math.floor(Math.random() * 4);
     switch (myRandom) {
         case 0:
@@ -48,8 +48,8 @@ Enemy.prototype.setStart = function () {
         default:
             this.y = 60;
     }
-     //Need some variation on speed
-     this.speedModifier = Math.floor(Math.random() * 150) + 50;
+    //Need some variation on speed
+    this.speedModifier = Math.floor(Math.random() * 150) + 50;
 }
 
 // Update the enemy's position, required method for game
@@ -99,7 +99,12 @@ class Player {
         switch (key) {
             case "up":
                 this.y = this.y - movementRate;
-                if (this.y < -10) this.y = -10;
+                if (this.y < -10) {
+                    this.y = -10;
+                    //This is where we need to indicate that you win
+                    console.log("You Win");
+                }
+
                 break;
             case "down":
                 this.y = this.y + movementRate;
@@ -114,7 +119,7 @@ class Player {
                 if (this.x > 410) this.x = 410;
                 break;
             default:
-               // console.log("invalid key pressed");
+                // console.log("invalid key pressed");
 
         }
     }
@@ -125,8 +130,7 @@ class Player {
 // Place the player object in a variable called player
 
 let allEnemies = [];
-for (let x=0;x<5;x++)
-{
+for (let x = 0; x < 5; x++) {
     let en = new Enemy();
     allEnemies.push(en);
 }
