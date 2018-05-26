@@ -26,7 +26,7 @@ var Enemy = function () {
     }
     this.x = Math.floor(Math.random() * 500);
     //Need some variation on speed
-    this.speedModifier = Math.floor(Math.random() * 150);
+    this.speedModifier = Math.floor(Math.random() * 150) + 50;
 };
 
 // Update the enemy's position, required method for game
