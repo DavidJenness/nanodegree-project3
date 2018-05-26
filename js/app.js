@@ -6,8 +6,26 @@ var Enemy = function () {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    //Pick a random row for the enemy to start
+    let myRandom = Math.floor(Math.random() * 4);
+    switch (myRandom) {
+        case 0:
+            this.y = 60;
+            break;
+        case 1:
+            this.y = 145;
+            break;
+        case 2:
+            this.y = 225;
+            break;
+        case 3:
+            this.y = 310;
+            break;
+        default:
+            this.y = 60;
+    }
     this.x = 300;
-    this.y = 145;
+    //this.y = 145;
 };
 
 // Update the enemy's position, required method for game
@@ -16,8 +34,10 @@ Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x - 1;
-    if (this.x== -100) {this.x = 500;}
+    this.x = (this.x + 100 * dt);
+    if (this.x >= 495) {
+        this.x = -100;
+    }
     console.log(this.x);
 };
 
@@ -54,19 +74,19 @@ class Player {
         switch (key) {
             case "up":
                 this.y = this.y - movementRate;
-                if (this.y < -10) this.y=-10;
+                if (this.y < -10) this.y = -10;
                 break;
             case "down":
                 this.y = this.y + movementRate;
-                if (this.y > 440) this.y=440;
+                if (this.y > 440) this.y = 440;
                 break;
             case "left":
                 this.x = this.x - movementRate;
-                if (this.x < -10) this.x=-10;
+                if (this.x < -10) this.x = -10;
                 break;
             case "right":
                 this.x = this.x + movementRate;
-                if (this.x > 410) this.x=410;
+                if (this.x > 410) this.x = 410;
                 break;
             default:
                 console.log("invalid key pressed");
@@ -80,7 +100,8 @@ class Player {
 // Place the player object in a variable called player
 
 let en1 = new Enemy();
-let allEnemies = [en1];
+let en2 = new Enemy();
+let allEnemies = [en1, en2];
 player = new Player();
 
 
