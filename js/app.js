@@ -124,11 +124,12 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-let en1 = new Enemy();
-let en2 = new Enemy();
-let en3 = new Enemy();
-let en4 = new Enemy();
-let allEnemies = [en1, en2, en3, en4];
+let allEnemies = [];
+for (let x=0;x<5;x++)
+{
+    let en = new Enemy();
+    allEnemies.push(en);
+}
 player = new Player();
 
 
