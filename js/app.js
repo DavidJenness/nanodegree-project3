@@ -90,6 +90,10 @@ class Player {
     render() {
 
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+        //This is the location of the player sprite on the screen
+        ctx.rect(this.x + 18,this.y +60,65,80);
+ctx.stroke();
         //console.log("Render player");
     }
     handleInput(key) {
