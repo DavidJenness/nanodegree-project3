@@ -28,6 +28,10 @@ var Enemy = function () {
     this.x = Math.floor(Math.random() * 500);
     //Need some variation on speed
     this.speedModifier = Math.floor(Math.random() * 150) + 50;
+    this.boundX = 0;
+    this.boundY = 0;
+    this.width = 0;
+    this.height = 0;
 };
 
 Enemy.prototype.setStart = function () {
@@ -58,7 +62,13 @@ Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    //this.x = (this.x + this.speedModifier * dt);
+    this.x = (this.x + this.speedModifier * dt);
+
+    this.boundX = this.x;
+    this.boundY = this.y + 76;
+    this.width = 100;
+    this.height = 67;
+
     if (this.x >= 495) {
         this.x = -100;
         this.setStart();
@@ -69,8 +79,8 @@ Enemy.prototype.update = function (dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-    ctx.rect(this.x, this.y + 76, 100, 67);
+    ctx.rect(this.boundX, this.boundY, this.width, this.height);
+    //ctx.rect(this.x, this.y + 76, 100, 67);
     ctx.stroke();
     //console.log("Render Enemy");
 };
@@ -84,10 +94,18 @@ class Player {
         this.sprite = 'images/char-boy.png';
         this.x = 200;
         this.y = 400;
+        this.boundX = 0;
+        this.boundY = 0;
+        this.width = 0;
+        this.height = 0;
     }
 
 
     update() {
+        this.boundX = this.x + 18;
+        this.boundY = this.y + 60;
+        this.width = 65;
+        this.height = 80;
 
     }
     render() {
@@ -95,7 +113,8 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
         //This is the location of the player sprite on the screen
-        ctx.rect(this.x + 18, this.y + 60, 65, 80);
+        ctx.rect(this.boundX, this.boundY, this.width, this.height);
+        //ctx.rect(this.x + 18, this.y + 60, 65, 80);
         ctx.stroke();
         //console.log("Render player");
     }
