@@ -162,5 +162,6 @@ function playAgain() {
 }
 
 function startNewGame() {
-    player = new Player();
+    player.x = 200;
+    player.y = 400;
 }
