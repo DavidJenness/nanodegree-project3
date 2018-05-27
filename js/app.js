@@ -58,7 +58,7 @@ Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + this.speedModifier * dt);
+    //this.x = (this.x + this.speedModifier * dt);
     if (this.x >= 495) {
         this.x = -100;
         this.setStart();
@@ -69,6 +69,9 @@ Enemy.prototype.update = function (dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+    ctx.rect(this.x, this.y + 76, 100, 67);
+    ctx.stroke();
     //console.log("Render Enemy");
 };
 
@@ -92,8 +95,8 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
         //This is the location of the player sprite on the screen
-        ctx.rect(this.x + 18,this.y +60,65,80);
-ctx.stroke();
+        ctx.rect(this.x + 18, this.y + 60, 65, 80);
+        ctx.stroke();
         //console.log("Render player");
     }
     handleInput(key) {
