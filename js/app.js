@@ -79,9 +79,9 @@ Enemy.prototype.update = function (dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.rect(this.boundX, this.boundY, this.width, this.height);
+    //ctx.rect(this.boundX, this.boundY, this.width, this.height);
     //ctx.rect(this.x, this.y + 76, 100, 67);
-    ctx.stroke();
+    //ctx.stroke();
     //console.log("Render Enemy");
 };
 
@@ -102,10 +102,27 @@ class Player {
 
 
     update() {
-        this.boundX = this.x + 18;
-        this.boundY = this.y + 60;
-        this.width = 65;
-        this.height = 80;
+        // this.boundX = this.x + 18;
+        // this.boundY = this.y + 60;
+        // this.width = 65;
+        // this.height = 80;
+
+        this.boundX = this.x + 25;
+        this.boundY = this.y + 70;
+        this.width = 50;
+        this.height = 65;
+
+        allEnemies.forEach(function (enemy) {
+            if (player.boundX < enemy.boundX + enemy.width &&
+                player.boundX + player.width > enemy.boundX &&
+                player.boundY < enemy.boundY + enemy.height &&
+                player.height + player.boundY > enemy.boundY) {
+                player.x = 200;
+                player.y = 400;
+                console.log("Collision");
+            }
+
+        });
 
     }
     render() {
@@ -113,9 +130,9 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
         //This is the location of the player sprite on the screen
-        ctx.rect(this.boundX, this.boundY, this.width, this.height);
+        //ctx.rect(this.boundX, this.boundY, this.width, this.height);
         //ctx.rect(this.x + 18, this.y + 60, 65, 80);
-        ctx.stroke();
+        //ctx.stroke();
         //console.log("Render player");
     }
     handleInput(key) {
