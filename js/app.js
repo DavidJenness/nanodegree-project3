@@ -66,7 +66,7 @@ Enemy.prototype.update = function (dt) {
 
     this.boundX = this.x;
     this.boundY = this.y + 76;
-    this.width = 100;
+    this.width = 95;
     this.height = 67;
 
     if (this.x >= 495) {
@@ -80,7 +80,6 @@ Enemy.prototype.update = function (dt) {
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //ctx.rect(this.boundX, this.boundY, this.width, this.height);
-    //ctx.rect(this.x, this.y + 76, 100, 67);
     //ctx.stroke();
     //console.log("Render Enemy");
 };
@@ -108,9 +107,9 @@ class Player {
         // this.height = 80;
 
         this.boundX = this.x + 25;
-        this.boundY = this.y + 70;
-        this.width = 50;
-        this.height = 65;
+        this.boundY = this.y + 60;
+        this.width = 53;
+        this.height = 75;
 
         allEnemies.forEach(function (enemy) {
             if (player.boundX < enemy.boundX + enemy.width &&
@@ -131,7 +130,6 @@ class Player {
 
         //This is the location of the player sprite on the screen
         //ctx.rect(this.boundX, this.boundY, this.width, this.height);
-        //ctx.rect(this.x + 18, this.y + 60, 65, 80);
         //ctx.stroke();
         //console.log("Render player");
     }
