@@ -101,10 +101,6 @@ class Player {
 
 
     update() {
-        // this.boundX = this.x + 18;
-        // this.boundY = this.y + 60;
-        // this.width = 65;
-        // this.height = 80;
 
         this.boundX = this.x + 25;
         this.boundY = this.y + 60;
@@ -127,22 +123,16 @@ class Player {
     render() {
 
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-        //This is the location of the player sprite on the screen
-        //ctx.rect(this.boundX, this.boundY, this.width, this.height);
-        //ctx.stroke();
-        //console.log("Render player");
     }
     handleInput(key) {
-        //console.log("movement detected");
-        //console.log(key);
+
         let movementRate = 20;
         switch (key) {
             case "up":
                 this.y = this.y - movementRate;
                 if (this.y < -10) {
                     this.y = -10;
-                    //This is where we need to indicate that you win
+
                     console.log("You Win");
                     document.getElementById("dialogBox").showModal();
                 }
